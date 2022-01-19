@@ -1,0 +1,25 @@
+request.data = request.POST, request.PUT, request.PATCH, request.FILES
+
+request.query_params = request.GET
+
+request.user -- if user is autheenticated, request.user is an instance of django.contrib.auth.models.User, 
+if not authenticated it is instance of django.contrib.auth.models.AnonymousUser
+
+request.auth -- if token authentication is used request.auth will be equal to token, in other authentication 
+types it will be equal to None
+
+request.method - returns uppercased string representation of the request's HTTP method(PUT, PATCH, GET,POST,DELETE)
+
+request.content_type - returns a string object representing the media type of the HTTP request's body, or an empty string if no media type was provided.
+You won't typically need to directly access the request's content type, as you'll normally rely on REST framework's default request parsing behavior.
+If you do need to access the content type of the request you should use the .content_type property in preference to using request.META.get('HTTP_CONTENT_TYPE'), 
+as it provides transparent support for browser-based non-form content.
+
+request.META
+
+request.stream
+
+request.session -- Django provides full support for anonymous sessions. The session framework lets you store and retrieve arbitrary data on a per-site-visitor basis.
+ It stores data on the server side and abstracts the sending and receiving of cookies. Cookies contain a session ID – 
+ not the data itself (unless you’re using the cookie based backend).
+ To set and get the session in views, we can use request.session and can set multiple times too.
